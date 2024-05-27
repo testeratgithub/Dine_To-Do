@@ -71,6 +71,8 @@ function renderLists(){
     const ListContainer = document.getElementsByTagName("ul")[0]
     if (List.length == 0 ){
         ListContainer.innerHTML = "<h4>Add an Task</h4>"
+
+Save()
     }
     else{
         ListContainer.innerHTML = ''
