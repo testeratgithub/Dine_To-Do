@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            user-select: none;
+            transition: 1s linear all;
+            /* pointer-events: none; */
+            outline: none;
+            border: none;
+            /* border: 1px solid red; */
+        }
+    </style>
+    <link rel="stylesheet" href="style/index.css">
+    <!-- <link rel="stylesheet" href="style/add.css"> -->
+    <script src="script/function.js"></script>
+</head>
+<body>
+    <div class="contents">
+        <h3>To-Do List</h3>
+        <div class="list-content">
+            <ul>
+                <li id="1"><input type="checkbox">Hi There<img src="images/bin.png" alt="Delete"></li>
+                <li id="2"><input type="checkbox">Hi There<img src="images/bin.png" alt="Delete"></li>
+                <li id="3"><input type="checkbox">Hi There<img src="images/bin.png" alt="Delete"></li>
+                <li data-key="5"><input type="checkbox">Hi There<img src="images/bin.png" alt="Delete"></li>
+                <!-- <h4>Add an Task</h4> -->
+            </ul>
+            <div class="add" onsubmit="return false">
+                <button id="add-promt" onclick="addListItem()">+ New Task</button>
+                <form id="add-field" >
+                    <input type="text">
+                    <button type="button">+ Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        renderLists()
+    </script>
+</body>
+</html>
