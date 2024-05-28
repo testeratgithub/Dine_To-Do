@@ -1,49 +1,48 @@
 const List = JSON.parse(localStorage.getItem("To-Do")) || []
 
-function DeleteList(){
-    const listElements = document.getElementsByTagName('li')
-    for(i=0;i<listElements.length;i++){
-        listElements[i].childNodes[2].addEventListener(
-            "click",(e)=>{
-                const listElement = e.target.parentNode
-                listElement.remove()
-                List.splice(listElement.dataset.key,1)
+// function DeleteList(){
+//     const listElements = document.getElementsByTagName('li')
+//     for(i=0;i<listElements.length;i++){
+//         listElements[i].childNodes[2].addEventListener(
+//             "click",(e)=>{
+//                 const listElement = e.target.parentNode
+//                 listElement.remove()
+//                 List.splice(listElement.dataset.key,1)
 
-                if(List.length == 0){
-                    renderLists()
-                }
-                else{
-                    Save()
-                }
-            }
-        )
-    }
-}
+//                 if(List.length == 0){
+//                     renderLists()
+//                 }
+//                 else{
+//                     Save()
+//                 }
+//             }
+//         )
+//     }
+// }
 
-function CheckOut(){
-    const listElements = document.getElementsByTagName('li')
-    for(i=0;i<listElements.length;i++){
-        listElements[i].childNodes[0].addEventListener(
-            "change",(e)=>{
-                const listElement = e.target.parentNode
-                if(e.target.checked){
-                    listElement.style.textDecoration = "line-through black 2px"
-                    List[listElement.dataset.key].Completed = true
-                    Save()
-                }
-                else{
-                    listElement.style.textDecoration = "none"
-                    List[listElement.dataset.key].Completed = false
-                    Save()
-                }
-            }
-        )
-    }
-}
+// function CheckOut(){
+//     const listElements = document.getElementsByTagName('li')
+//     for(i=0;i<listElements.length;i++){
+//         listElements[i].childNodes[0].addEventListener(
+//             "change",(e)=>{
+//                 const listElement = e.target.parentNode
+//                 if(e.target.checked){
+//                     listElement.style.textDecoration = "line-through black 2px"
+//                     List[listElement.dataset.key].Completed = true
+//                     Save()
+//                 }
+//                 else{
+//                     listElement.style.textDecoration = "none"
+//                     List[listElement.dataset.key].Completed = false
+//                     Save()
+//                 }
+//             }
+//         )
+//     }
+// }
 
 document.getElementById("Lists").addEventListener(
     "click",(e)=>{
-        console.log(e.target.tagName)
         if (e.target.tagName == "INPUT"){
             const listElement = e.target.parentNode
                 if(e.target.checked){
