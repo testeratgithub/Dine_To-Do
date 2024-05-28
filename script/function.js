@@ -9,7 +9,12 @@ function DeleteList(){
                 listElement.remove()
                 List.splice(listElement.dataset.key,1)
 
-                renderLists()
+                if(List.length == 0){
+                    renderLists()
+                }
+                else{
+                    Save()
+                }
             }
         )
     }
@@ -36,6 +41,36 @@ function CheckOut(){
     }
 }
 
+document.getElementById("Lists").addEventListener(
+    "click",(e)=>{
+        console.log(e.target.tagName)
+        if (e.target.tagName == "INPUT"){
+            const listElement = e.target.parentNode
+                if(e.target.checked){
+                    listElement.style.textDecoration = "line-through black 2px"
+                    List[listElement.dataset.key].Completed = true
+                    Save()
+                }
+                else{
+                    listElement.style.textDecoration = "none"
+                    List[listElement.dataset.key].Completed = false
+                    Save()
+                }
+        }
+        if (e.target.tagName == "IMG"){
+            const listElement = e.target.parentNode
+                listElement.remove()
+                List.splice(listElement.dataset.key,1)
+                if(List.length == 0){
+                    renderLists()
+                }
+                else{
+                    Save()
+                }
+        }
+    }
+)
+document.getElementById("Lists").ta
 function addListItem(){
     const pri_button = document.getElementById("add-promt")
     const promt_field = document.getElementById("add-field")
@@ -71,19 +106,17 @@ function renderLists(){
     const ListContainer = document.getElementsByTagName("ul")[0]
     if (List.length == 0 ){
         ListContainer.innerHTML = "<h4>Add an Task</h4>"
-
-Save()
     }
     else{
         ListContainer.innerHTML = ''
         List.forEach((x,i)=>{
             ListContainer.innerHTML += `<li data-key="${i}" class="${checkboxStatus(x.Completed)}"><input type="checkbox" ${checkboxStatus(x.Completed)}>${x.task}<img src="images/bin.png" alt="Delete" ></li>`
         })
-        DeleteList()
-        CheckOut()
+        // DeleteList()
+        // CheckOut()
 
-        Save()
     }
+    Save()
 }
 
 
